@@ -20,14 +20,17 @@
     <div class="demo-badge" id="demoBadge" title="This is a demo. All data is sample data.">Demo — sample data</div>
     <nav class="nav" id="nav">
       <a href="https://afd-web.com/" class="login-only hide-sm">afd-web.com</a>
-      <a class="nav-phone login-only" href="tel:+12816515462">(281) 651-5462</a>
-      <a href="#/dashboard" data-nav="dashboard">My Loads</a>
-      <a href="#/dashboard?f=delivered" data-nav="history">History</a>
-      <a href="mailto:quotes@afd-web.com" class="hide-sm app-only">Contact</a>
-      <a class="nav-phone hide-sm app-only" href="tel:+12816515462">(281) 651-5462</a>
-      <button class="user-chip" id="userChip" type="button" aria-label="Sign out"><span class="avatar">SC</span><span class="uc-text"><b>Sample Customer Co.</b><small>Sign out</small></span></button>
+      <a class="nav-phone login-only hide-sm" href="tel:+12816515462">(281) 651-5462</a>
+      <a href="#/dashboard" data-nav="dashboard">My loads</a>
+      <a href="#/yard" data-nav="yard">Yard storage</a>
+      <a href="#/history" data-nav="history">History</a>
+      <a class="nav-phone app-only hide-md" href="tel:+12816515462">(281) 651-5462</a>
+      <a class="btn btn-primary btn-sm nav-cta app-only" href="#/quote" data-nav="quote">Get a quote</a>
+      <button class="user-chip app-only" id="userChip" type="button" aria-label="Sign out"><span class="avatar">JM</span><span class="uc-text"><b>Jordan Miles</b><small>Sample Customer Co. · Sign out</small></span></button>
+      <button class="menu-btn app-only" id="menuBtn" type="button" aria-label="Menu">Menu</button>
     </nav>
   </div>
+  <div class="mnav" id="mnav"><a href="#/dashboard">My loads</a><a href="#/yard">Yard storage</a><a href="#/history">History</a><a href="#/quote">Get a quote</a><a href="tel:+12816515462">(281) 651-5462</a><button type="button" id="mSignout">Sign out · Jordan Miles</button></div>
   <div class="road" aria-hidden="true"><svg class="road-truck" viewBox="0 0 34 14"><path fill="currentColor" d="M0 4h20v6H0zM21 2h6l4 4v4h-10z"/><circle cx="5" cy="11.5" r="2" fill="#141006"/><circle cx="15" cy="11.5" r="2" fill="#141006"/><circle cx="27" cy="11.5" r="2" fill="#141006"/></svg></div>
 </header>
 <main id="app" aria-live="polite"></main>
@@ -36,10 +39,12 @@
     <div><b class="ftr-tag">Heavy Haul Done Right</b><span>We haul throughout the United States.</span></div>
     <div class="ftr-links"><a href="https://afd-web.com/" target="_blank" rel="noopener">afd-web.com</a><a href="mailto:quotes@afd-web.com">quotes@afd-web.com</a><a href="tel:+12816515462">(281) 651-5462</a></div>
   </div>
-  <div class="container ftr-small">© 2026 Advanced Freight Dynamics LLC · Customer portal demo. All loads, names and numbers shown are sample data.</div>
+  <div class="container ftr-addr"><div><b>Main Terminal</b>14389 FM 1485, Conroe, TX 77306</div><div><b>Big Spring Terminal</b>8703 W IH 20, Big Spring, TX 79720</div><div><b>USDOT / MC</b>USDOT 1876629 · MC-620040</div></div>
+  <div class="container ftr-small">© 2026 Advanced Freight Dynamics LLC · Customer portal demo. All customers, loads, names and numbers shown are sample data.</div>
 </footer>
 <div class="mobile-bar" id="mbar"><a href="tel:+12816515462">(281) 651-5462</a><a class="mb-cta" href="mailto:quotes@afd-web.com">Email Dispatch</a></div>
 <div class="toast" id="toast" role="status"></div>
+<div class="modal" id="modal" aria-hidden="true"><div class="modal-card"><button class="modal-x" aria-label="Close">×</button><div class="modal-body"></div></div></div>
 <div class="lightbox" id="lb" aria-hidden="true"><button class="lb-close" aria-label="Close">×</button><button class="lb-nav lb-prev" aria-label="Previous">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="lb-nav lb-next" aria-label="Next">›</button></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="assets/js/routes.js"></script>

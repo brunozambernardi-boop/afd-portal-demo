@@ -1,95 +1,119 @@
-/* SAMPLE DATA ONLY — demo portal. Nothing here is a real customer or load. */
+/* SAMPLE DATA ONLY. Every customer, load, PO, permit and document here is made up for the demo.
+   Times are hours relative to "now" so the demo always looks current.
+   In the live portal this comes from the trucks' GPS, dispatch updates and documents uploaded by the AFD office. */
 window.AFD_DATA = {
-  customer: { company: "Sample Customer Co.", contact: "Demo User" },
-  steps: ["Quote approved", "Permits secured", "Loaded", "In transit", "Delivered"],
+  customer: { company: 'Sample Customer Co.', user: 'Jordan Miles', first: 'Jordan', initials: 'JM' },
+  dispatch: { name: 'AFD Dispatch', phone: '(281) 651-5462', tel: '+12816515462', email: 'quotes@afd-web.com' },
+  company: { usdot: 'USDOT 1876629', mc: 'MC-620040' },
+  terminals: {
+    main: { name: 'Main Terminal', addr: '14389 FM 1485, Conroe, TX 77306', ll: [30.2414, -95.3006] },
+    bigspring: { name: 'Big Spring Terminal', addr: '8703 W IH 20, Big Spring, TX 79720', ll: [32.1884, -101.6335],
+      facts: ['15 acres, 5 acres stabilized', 'Fully fenced with security', 'Rail served', '30-ton high-lift forklift', 'Drivers lounge'] }
+  },
+  photos: {
+    'svc-heavy-haul': ['svc-heavy-haul.webp', 1600, 1200], 'module-shop': ['module-shop.jpg', 1400, 1050],
+    'gens-sunset': ['gens-sunset.jpg', 1400, 1050], 'gens-skid': ['gens-skid.jpg', 1400, 1050],
+    'crane': ['crane.jpg', 1050, 1400], 'ehouse-yard': ['ehouse-yard.jpg', 1400, 1050], 'ehouse-row': ['ehouse-row.jpg', 1400, 1050],
+    'vessel-mtn': ['vessel-mtn.jpg', 1400, 1050], 'vessel-yard': ['vessel-yard.jpg', 1400, 788],
+    'jackslide': ['jackslide.jpg', 1400, 1050], 'afd-specialized-equipment': ['afd-specialized-equipment.webp', 960, 640],
+    'tube': ['tube.jpg', 1400, 1050], 'svc-oversize': ['svc-oversize.webp', 1600, 739], 'hero': ['hero.webp', 1600, 1069]
+  },
+  quotes: [
+    { id: 'Q-5531', cargo: 'Power transformer #2', lane: 'Pasadena, TX → Midland, TX', amount: '$48,600', valid: 72,
+      note: 'Sister unit to AFD-25107. Includes the Texas superload permit, 3 escorts and a jack and slide set on the pad.' }
+  ],
+  steps: ['Quote approved', 'Permits secured', 'Loaded and secured', 'In transit', 'Delivered'],
   loads: [
-    {
-      id: "AFD-24871", route: "A",
-      cargo: "Pressure vessel", short: "Pressure vessel",
-      from: { city: "Houston, TX", place: "Customer fabrication yard" },
-      to:   { city: "Odessa, TX",  place: "Plant site, laydown area 3" },
-      status: 3, progress: 0.56, moving: true,
-      eta: "Thu, Nov 19 · 2:00 PM CT", etaShort: "Nov 19",
-      speed: "48 mph",
-      po: "PO 55-1093",
-      times: ["Nov 10 · 9:05 AM", "Nov 14 · 3:40 PM", "Nov 17 · 6:10 AM", "Nov 17 · 7:30 AM", null],
-      notes: ["Quote signed by customer.", "Texas oversize/overweight permit issued.", "Load secured and checked at pickup.", "Daylight travel only, with pilot cars.", "Expected Thu, Nov 19."],
-      specs: { Length: "98 ft 0 in", Width: "14 ft 6 in", Height: "15 ft 2 in", "Cargo weight": "182,000 lb", Trailer: "13-axle perimeter frame", Escorts: "2 pilot cars", "Permit states": "Texas" },
-      photos: [
-        { src: "assets/img/hero.webp", w: 1600, h: 1069, cap: "Pickup — loaded and secured", when: "Nov 17 · 6:10 AM" },
-        { src: "assets/img/intro-thumb.webp", w: 1426, h: 808, cap: "Pickup — final check before departure", when: "Nov 17 · 7:20 AM" }
-      ],
-      docs: [
-        { name: "Bill of Lading (BOL)", meta: "PDF · signed at pickup", ok: true },
-        { name: "Texas OS/OW permit", meta: "PDF · TxDMV", ok: true },
-        { name: "Certificate of insurance", meta: "PDF", ok: true },
-        { name: "Proof of delivery (POD)", meta: "Ready after delivery", ok: false }
-      ]
-    },
-    {
-      id: "AFD-24877", route: "B",
-      cargo: "Data center module", short: "Data center module",
-      from: { city: "Conroe, TX", place: "Module builder yard" },
-      to:   { city: "Abilene, TX", place: "Data center campus, gate B" },
-      status: 2, progress: 0, moving: false,
-      eta: "Fri, Nov 20 · 11:00 AM CT", etaShort: "Nov 20",
-      po: "PO 55-1101",
-      times: ["Nov 11 · 10:20 AM", "Nov 16 · 1:15 PM", "Nov 18 · 9:15 AM", null, null],
-      notes: ["Quote signed by customer.", "Texas oversize permit issued.", "Loaded and tarped. Departs at sunrise.", "Starts Thu, Nov 19 at sunrise.", "Expected Fri, Nov 20."],
-      specs: { Length: "60 ft 0 in", Width: "16 ft 0 in", Height: "14 ft 8 in", "Cargo weight": "96,000 lb", Trailer: "Stretch RGN", Escorts: "2 pilot cars", "Permit states": "Texas" },
-      photos: [
-        { src: "assets/img/svc-heavy-haul.webp", w: 1600, h: 1200, cap: "Pickup — module loaded", when: "Nov 18 · 9:15 AM" },
-        { src: "assets/img/afd-specialized-equipment.webp", w: 960, h: 640, cap: "Pickup — strapped and checked", when: "Nov 18 · 9:40 AM" }
-      ],
-      docs: [
-        { name: "Bill of Lading (BOL)", meta: "PDF · signed at pickup", ok: true },
-        { name: "Texas OS/OW permit", meta: "PDF · TxDMV", ok: true },
-        { name: "Certificate of insurance", meta: "PDF", ok: true },
-        { name: "Proof of delivery (POD)", meta: "Ready after delivery", ok: false }
-      ]
-    },
-    {
-      id: "AFD-24890", route: "D",
-      cargo: "400-ton power transformer", short: "Power transformer",
-      from: { city: "Pasadena, TX", place: "Port of Houston terminal" },
-      to:   { city: "Midland, TX", place: "Substation site" },
-      status: 1, progress: 0, moving: false,
-      eta: "Mon, Nov 30 · 4:00 PM CT", etaShort: "Nov 30",
-      po: "PO 55-1120",
-      times: ["Nov 09 · 2:30 PM", "Nov 17 · 11:05 AM", null, null, null],
-      notes: ["Quote signed by customer.", "Superload permit issued for the state-assigned route.", "Pickup set for Tue, Nov 24.", "Night moves not allowed on this permit.", "Expected Mon, Nov 30."],
-      specs: { Length: "32 ft 4 in", Width: "12 ft 2 in", Height: "14 ft 9 in", "Cargo weight": "800,000 lb (400 tons)", Trailer: "19-axle dual-lane", Escorts: "Pilot cars + police escort", "Permit states": "Texas" },
+    { id: 'AFD-25104', po: 'PO 77-3104', project: 'Mesa North data center campus',
+      cargo: 'Data center power module', route: 'A', status: 'transit', active: 3, p0: 0.418, mph: 49,
+      from: { city: 'Houston, TX', place: 'Module builder yard, Gate 3' }, to: { city: 'Mesa, AZ', place: 'Building C pad, east laydown' },
+      window: { h: 60, label: '7:00 to 11:00 AM MST' }, unit: 'Truck 214', trailer: 'Faymonville 13-axle perimeter frame',
+      specs: { Length: '86 ft 4 in overall', Width: '15 ft 10 in', Height: '14 ft 9 in', 'Gross weight': '211,400 lb', 'Cargo weight': '148,000 lb', Escorts: '2 pilot cars + height pole' },
+      restrict: { TX: 'Daylight only. No travel in Houston metro 7–9 AM and 4–7 PM.', NM: 'Daylight only. Front and rear escort.', AZ: 'Daylight only. No Phoenix metro travel 6–9 AM and 3–7 PM.' },
+      steps: [[-310, 'Quote Q-5402 approved by your team.'], [-96, 'TX, NM and AZ oversize/overweight permits issued.'], [-50, 'Securement checked and photographed at pickup.'], [-47, 'Daylight hours with 2 pilot cars.'], [null, 'Delivery appointment set for your crew.']],
+      ready: ['Pad or foundation complete and inspected', 'Crane or jack and slide crew booked for the set', 'Gate access and site contact confirmed', 'Ground path checked for an 86 ft trailer'],
+      events: [[-0.2, 'ping', 'On I-10 westbound, moving 49 mph'], [-2.1, 'fuel', 'Fuel stop, Fort Stockton, TX (22 min)'], [-14.5, 'park', 'Parked overnight at Ozona, TX. Daylight-only permit.'], [-24.3, 'check', 'Permit checkpoint cleared, Kerrville, TX'], [-38, 'escort', 'Escort change at San Antonio. Height pole car joined.'], [-47, 'depart', 'Departed Houston module yard'], [-50, 'photo', 'Securement photos added (2)'], [-96, 'doc', 'NM and AZ permits issued and added to Documents'], [-120, 'doc', 'TX permit issued and added to Documents']],
+      photos: [['svc-heavy-haul', 'Loaded and secured at pickup', -50], ['module-shop', 'Final securement check before departure', -49]],
+      docs: [['Bill of lading', 'Signed at pickup', true], ['TX oversize/overweight permit', 'TxDMV', true], ['NM oversize/overweight permit', 'NMDOT', true], ['AZ oversize/overweight permit', 'ADOT', true], ['Certificate of insurance', 'Current', true], ['Proof of delivery', 'Ready after delivery', false]] },
+    { id: 'AFD-25111', po: 'PO 77-3111', project: 'Abilene West data center, Phase 2',
+      cargo: 'Backup generators (2 units)', route: 'D', status: 'parked', active: 3, p0: 0.752, mph: 0,
+      from: { city: 'Channelview, TX', place: 'Generator packager, Bay 6' }, to: { city: 'Abilene, TX', place: 'Generator yard, pads G-7 and G-8' },
+      resume: { h: 11.5, label: '6:45 AM CST' }, park: 'Truck lot, Dublin, TX',
+      window: { h: 26, label: '1:00 to 5:00 PM CST' }, unit: 'Trucks 207 and 219', trailer: '2 × 9-axle double drops',
+      specs: { Length: '78 ft 0 in each', Width: '13 ft 2 in', Height: '15 ft 4 in', 'Gross weight': '156,000 lb each', 'Cargo weight': '96,500 lb each', Escorts: '2 pilot cars for the convoy' },
+      restrict: { TX: 'Daylight only. Convoy of 2 with shared escorts.' },
+      steps: [[-260, 'Quote Q-5377 approved by your team.'], [-70, 'TX permits issued for both units.'], [-31, 'Both units loaded at Bay 6.'], [-29, 'Convoy travels daylight hours only.'], [null, 'Delivery appointment set for your crew.']],
+      ready: ['Generator pads G-7 and G-8 ready', 'Crane booked for both picks', 'Site contact on call at arrival'],
+      events: [[-5.3, 'park', 'Convoy parked for the night at Dublin, TX. Daylight-only permit. Rolls again at 6:45 AM.'], [-8, 'ping', 'Passed Waco on TX-6, both units together'], [-21, 'park', 'Parked overnight at Bryan, TX. Daylight-only permit.'], [-29, 'depart', 'Convoy departed Channelview'], [-31, 'photo', 'Loading photos added (2)']],
+      photos: [['gens-sunset', 'Both units loaded and ready to roll', -31], ['gens-skid', 'Unit 2 tarp and chain check', -30]],
+      docs: [['Bills of lading (2)', 'Signed at pickup', true], ['TX oversize/overweight permits (2)', 'TxDMV', true], ['Certificate of insurance', 'Current', true], ['Proof of delivery', 'Ready after delivery', false]] },
+    { id: 'AFD-25113', po: 'PO 77-3113', project: 'Midland Basin substation upgrade',
+      cargo: 'Switchgear skid', route: 'G', status: 'loaded', active: 3, p0: 0, mph: 0,
+      from: { city: 'Temple, TX', place: 'Fabricator yard' }, to: { city: 'Midland, TX', place: 'Substation pad 2' },
+      depart: { h: 18, label: '6:30 AM CST' }, window: { h: 30, label: '10:00 AM to 2:00 PM CST' }, unit: 'Truck 223', trailer: '6-axle step deck',
+      specs: { Length: '64 ft 0 in overall', Width: '12 ft 6 in', Height: '13 ft 10 in', 'Gross weight': '118,000 lb', 'Cargo weight': '61,200 lb', Escorts: '1 pilot car' },
+      restrict: { TX: 'Daylight only.' },
+      steps: [[-140, 'Quote Q-5450 approved by your team.'], [-40, 'TX permit issued.'], [-3, 'Lifted on with the shop crane and secured.'], [null, 'Departs tomorrow at 6:30 AM.'], [null, 'Delivery appointment set for your crew.']],
+      ready: ['Pad 2 ready', 'Offload crane booked', 'Site contact confirmed'],
+      events: [[-3, 'photo', 'Loading photo added'], [-3.5, 'load', 'Loaded and secured at Temple'], [-40, 'doc', 'TX permit issued and added to Documents']],
+      photos: [['crane', 'Lifted on with the shop crane', -3]],
+      docs: [['Bill of lading', 'Signed at pickup', true], ['TX oversize/overweight permit', 'TxDMV', true], ['Certificate of insurance', 'Current', true], ['Proof of delivery', 'Ready after delivery', false]] },
+    { id: 'AFD-25107', po: 'PO 77-3107', project: 'Midland Basin substation upgrade',
+      cargo: 'Power transformer (main tank)', route: 'B', status: 'permits', active: 1, p0: 0, mph: 0,
+      from: { city: 'Pasadena, TX', place: 'Transformer service shop' }, to: { city: 'Midland, TX', place: 'Substation pad 1' },
+      depart: { h: 140, label: '7:00 AM CST' }, unit: 'To be assigned', trailer: 'Faymonville Dual-Max',
+      specs: { Length: '142 ft 0 in overall', Width: '16 ft 0 in', Height: '15 ft 6 in', 'Gross weight': '486,000 lb', 'Cargo weight': '286,000 lb', Escorts: '3 escorts + police in metro areas' },
+      restrict: { TX: 'Superload permit. Daylight only. The state assigns the route.' },
+      steps: [[-200, 'Quote Q-5418 approved by your team.'], [null, 'Superload permit application with TxDMV. AFD is securing the permit.'], [null, 'Pickup set for Monday, 7:00 AM.'], [null, ''], [null, 'Final set on pad 1 with jack and slide.']],
+      ready: ['Pad 1 cured and inspected', 'Jack and slide set approved by your engineer', 'Outage window confirmed with the utility'],
+      events: [[-6, 'doc', 'Superload permit application added to Documents'], [-30, 'check', 'Superload permit application filed with TxDMV'], [-200, 'quote', 'Quote Q-5418 approved']],
       photos: [],
-      docs: [
-        { name: "Texas superload permit", meta: "PDF · TxDMV", ok: true },
-        { name: "Certificate of insurance", meta: "PDF", ok: true },
-        { name: "Bill of Lading (BOL)", meta: "Ready at pickup", ok: false },
-        { name: "Proof of delivery (POD)", meta: "Ready after delivery", ok: false }
-      ]
-    },
-    {
-      id: "AFD-24855", route: "C",
-      cargo: "Large tube (process column)", short: "Large tube",
-      from: { city: "Big Spring, TX", place: "AFD Big Spring Terminal" },
-      to:   { city: "Corpus Christi, TX", place: "Refinery site" },
-      status: 4, progress: 1, moving: false, delivered: true,
-      eta: "Delivered Thu, Nov 12 · 3:20 PM CT", etaShort: "Delivered",
-      po: "PO 55-1077",
-      times: ["Oct 28 · 8:45 AM", "Nov 04 · 4:10 PM", "Nov 09 · 6:30 AM", "Nov 09 · 7:15 AM", "Nov 12 · 3:20 PM"],
-      notes: ["Quote signed by customer.", "Texas oversize permit issued.", "Loaded with rear steer dolly.", "3 days, daylight only.", "Signed for by site lead. On time."],
-      specs: { Length: "140 ft 0 in", Width: "13 ft 0 in", Height: "13 ft 6 in", "Cargo weight": "64,000 lb", Trailer: "Stretch trailer + steer dolly", Escorts: "2 pilot cars", "Permit states": "Texas" },
-      photos: [
-        { src: "assets/img/svc-oversize.webp", w: 1600, h: 739, cap: "Pickup — tube loaded on stretch trailer", when: "Nov 09 · 6:30 AM" }
-      ],
-      docs: [
-        { name: "Bill of Lading (BOL)", meta: "PDF · signed", ok: true },
-        { name: "Texas OS/OW permit", meta: "PDF · TxDMV", ok: true },
-        { name: "Proof of delivery (POD)", meta: "PDF · signed Nov 12", ok: true },
-        { name: "Invoice", meta: "PDF", ok: true }
-      ]
-    }
+      docs: [['Superload permit application', 'Filed with TxDMV', true], ['TX superload permit', 'In review', false], ['Certificate of insurance', 'Current', true], ['Bill of lading', 'Ready at pickup', false]] },
+    { id: 'AFD-25098', po: 'PO 77-3098', project: 'Midland Basin substation upgrade',
+      cargo: 'Control building (PDC)', route: 'C', status: 'yard', active: 3, p0: 1, mph: 0,
+      from: { city: 'Conroe, TX', place: 'Builder yard' }, to: { city: 'Big Spring, TX', place: 'AFD Big Spring Terminal, Row C' },
+      yard: { in: -218, spot: 'Row C, slot 4', inspected: -20, next: 'Midland substation, pad 3', fee: 'First 30 days included' },
+      unit: 'Stored', trailer: 'Off-loaded on cribbing',
+      specs: { Length: '58 ft 0 in', Width: '14 ft 0 in', Height: '13 ft 6 in', 'Cargo weight': '74,000 lb', Storage: 'On cribbing, tarped, fenced yard' },
+      restrict: { TX: 'Final move needs a new TX permit. AFD files it when you release the building.' },
+      stepNames: ['Quote approved', 'Permits secured', 'Loaded and secured', 'Stored at Big Spring Terminal', 'Delivered to site'],
+      steps: [[-420, 'Quote Q-5321 approved by your team.'], [-300, 'TX permit issued.'], [-232, 'Loaded at Conroe.'], [-218, 'Held until your site is ready.'], [null, 'Waiting for your release.']],
+      ready: ['Pad 3 ready for the building', 'Crane booked for the set', 'Release approved by your project manager'],
+      events: [[-20, 'photo', 'Weekly yard inspection photo added'], [-188, 'photo', 'Weekly yard inspection photo added'], [-218, 'yard', 'Arrived at Big Spring Terminal, set on cribbing in Row C'], [-232, 'depart', 'Departed Conroe']],
+      photos: [['ehouse-yard', 'Delivered to the yard on the trailer', -219], ['ehouse-row', 'Stored in Row C, tarps and cribbing checked', -20]],
+      docs: [['Bill of lading', 'Signed at pickup', true], ['Yard receiving report', 'Condition on arrival', true], ['Weekly inspection log', 'Updated weekly', true], ['Certificate of insurance', 'Current', true]] },
+    { id: 'AFD-25076', po: 'PO 77-3076', project: 'Pueblo process plant expansion',
+      cargo: 'Pressure vessel', route: 'E', status: 'delivered', active: 5, p0: 1, mph: 0,
+      from: { city: 'Houston, TX', place: 'Fabrication shop' }, to: { city: 'Pueblo, CO', place: 'Plant site, foundation V-2' },
+      delivered: { h: -146, signer: 'R. Delgado' }, unit: 'Truck 201', trailer: '13-axle perimeter frame',
+      specs: { Length: '102 ft 0 in overall', Width: '14 ft 6 in', Height: '15 ft 2 in', 'Cargo weight': '182,000 lb', Escorts: '2 pilot cars' },
+      restrict: { TX: 'Daylight only.', NM: 'Daylight only.', CO: 'Daylight only. Raton Pass in good weather only.' },
+      steps: [[-600, ''], [-400, ''], [-260, ''], [-258, ''], [-146, 'Delivered on time. Signed by R. Delgado.']],
+      events: [[-146, 'done', 'Delivered and signed for by R. Delgado'], [-258, 'depart', 'Departed Houston']],
+      photos: [['vessel-mtn', 'On the way to the Pueblo site', -150], ['vessel-yard', 'Loaded at the Houston shop', -260]],
+      docs: [['Bill of lading', 'Signed at pickup', true], ['Proof of delivery', 'Signed by R. Delgado', true], ['TX, NM and CO permits', '3 permits', true], ['Invoice INV-30871', 'Sent to accounts payable', true]] },
+    { id: 'AFD-25081', po: 'PO 77-3081', project: 'Abilene West data center, Phase 1',
+      cargo: 'Data center modules (3)', route: 'D', status: 'delivered', active: 5, p0: 1, mph: 0,
+      from: { city: 'Channelview, TX', place: 'Module builder' }, to: { city: 'Abilene, TX', place: 'Hall 1, set with jack and slide' },
+      delivered: { h: -244, signer: 'T. Nguyen' }, unit: 'Trucks 204, 214, 219', trailer: '3 × 9-axle double drops',
+      specs: { Length: '72 ft 0 in each', Width: '14 ft 0 in', Height: '14 ft 6 in', 'Cargo weight': '88,000 lb each', 'Final set': 'Jack and slide by the AFD crew' },
+      restrict: { TX: 'Daylight only.' },
+      steps: [[-700, ''], [-500, ''], [-300, ''], [-298, ''], [-244, 'Set on foundations with jack and slide. Signed by T. Nguyen.']],
+      events: [[-244, 'done', 'All 3 modules set with jack and slide and signed for'], [-298, 'depart', 'Convoy departed Channelview']],
+      photos: [['afd-specialized-equipment', 'Module loaded at the builder', -300], ['jackslide', 'AFD crew setting module 2 with jack and slide', -246]],
+      docs: [['Bills of lading (3)', 'Signed at pickup', true], ['Proof of delivery', 'Signed by T. Nguyen', true], ['TX permits (3)', 'TxDMV', true], ['Invoice INV-30812', 'Paid', true]] },
+    { id: 'AFD-25069', po: 'PO 77-3069', project: 'Corpus Christi terminal',
+      cargo: 'Process column', route: 'F', status: 'delivered', active: 5, p0: 1, mph: 0,
+      from: { city: 'Big Spring, TX', place: 'AFD Big Spring Terminal' }, to: { city: 'Corpus Christi, TX', place: 'Terminal laydown 4' },
+      delivered: { h: -340, signer: 'M. Ortiz' }, unit: 'Truck 209', trailer: 'Multi-axle extendable',
+      specs: { Length: '131 ft 0 in overall', Width: '12 ft 0 in', Height: '13 ft 0 in', 'Cargo weight': '96,000 lb', Escorts: '2 pilot cars' },
+      restrict: { TX: 'Daylight only.' },
+      steps: [[-800, ''], [-600, ''], [-390, ''], [-388, ''], [-340, 'Delivered on time. Signed by M. Ortiz.']],
+      events: [[-340, 'done', 'Delivered and signed for by M. Ortiz'], [-388, 'depart', 'Departed Big Spring Terminal']],
+      photos: [['tube', 'On the road to Corpus Christi', -380], ['svc-oversize', 'Loaded on the extendable trailer', -390]],
+      docs: [['Bill of lading', 'Signed at pickup', true], ['Proof of delivery', 'Signed by M. Ortiz', true], ['TX permit', 'TxDMV', true], ['Invoice INV-30744', 'Paid', true]] }
   ],
   towns: [
-    ["Houston",29.76,-95.37],["Katy",29.79,-95.82],["Sealy",29.78,-96.16],["Columbus",29.71,-96.54],["Weimar",29.70,-96.78],["Schulenburg",29.68,-96.90],["Flatonia",29.69,-97.11],["Waelder",29.69,-97.30],["Seguin",29.57,-97.96],["San Antonio",29.42,-98.49],["Boerne",29.79,-98.73],["Comfort",29.97,-98.90],["Kerrville",30.05,-99.14],["Junction",30.49,-99.77],["Sonora",30.57,-100.64],["Ozona",30.71,-101.20],["Fort Stockton",30.89,-102.88],["McCamey",31.13,-102.22],["Crane",31.40,-102.35],["Odessa",31.85,-102.37],["Midland",32.00,-102.08],["Big Spring",32.25,-101.48],["Sweetwater",32.47,-100.41],["Abilene",32.45,-99.73],["Brenham",30.17,-96.40],["Giddings",30.18,-96.94],["Bastrop",30.11,-97.32],["Austin",30.27,-97.74],["Lampasas",31.06,-98.18],["Brownwood",31.71,-98.99],["Coleman",31.83,-99.43],["Conroe",30.31,-95.46],["Navasota",30.39,-96.09],["Bryan",30.67,-96.37],["Waco",31.55,-97.15],["Temple",31.10,-97.34],["Stephenville",32.22,-98.20],["Eastland",32.40,-98.82],["Cisco",32.39,-98.98],["San Angelo",31.46,-100.44],["Robert Lee",31.89,-100.48],["Garden City",31.86,-101.48],["Sterling City",31.84,-100.98],["Corpus Christi",27.80,-97.40],["George West",28.33,-98.12],["Three Rivers",28.46,-98.18],["Pleasanton",28.97,-98.48],["Sinton",28.04,-97.51],["Lamesa",32.74,-101.95],["Stanton",32.13,-101.79],["Pasadena",29.69,-95.21],["Brady",31.13,-99.33],["Mason",30.75,-99.23],["Fredericksburg",30.27,-98.87],["Llano",30.75,-98.68],["Menard",30.92,-99.79],["Eldorado",30.86,-100.60],["Big Lake",31.19,-101.46],["Rankin",31.22,-101.94],["Victoria",28.80,-97.00],["El Campo",29.20,-96.27],["Wharton",29.31,-96.10],["Hondo",29.35,-99.14],["Uvalde",29.21,-99.79],["Del Rio",29.36,-100.90],["Beeville",28.40,-97.75]
+    ['Houston','TX',29.76,-95.37],['Katy','TX',29.79,-95.82],['Sealy','TX',29.78,-96.16],['Columbus','TX',29.71,-96.54],['Schulenburg','TX',29.68,-96.90],['Flatonia','TX',29.69,-97.11],['Seguin','TX',29.57,-97.96],['San Antonio','TX',29.42,-98.49],['Boerne','TX',29.79,-98.73],['Comfort','TX',29.97,-98.90],['Kerrville','TX',30.05,-99.14],['Junction','TX',30.49,-99.77],['Sonora','TX',30.57,-100.64],['Ozona','TX',30.71,-101.20],['Fort Stockton','TX',30.89,-102.88],['Van Horn','TX',31.04,-104.83],['Sierra Blanca','TX',31.17,-105.36],['El Paso','TX',31.76,-106.44],['Las Cruces','NM',32.32,-106.76],['Deming','NM',32.27,-107.76],['Lordsburg','NM',32.35,-108.71],['Willcox','AZ',32.25,-109.83],['Benson','AZ',31.97,-110.29],['Tucson','AZ',32.22,-110.97],['Casa Grande','AZ',32.88,-111.76],['Chandler','AZ',33.31,-111.84],['Mesa','AZ',33.42,-111.83],['Odessa','TX',31.85,-102.37],['Midland','TX',32.00,-102.08],['Big Spring','TX',32.25,-101.48],['Sweetwater','TX',32.47,-100.41],['Abilene','TX',32.45,-99.73],['Brenham','TX',30.17,-96.40],['Austin','TX',30.27,-97.74],['Conroe','TX',30.31,-95.46],['Navasota','TX',30.39,-96.09],['Bryan','TX',30.67,-96.37],['Hearne','TX',30.88,-96.59],['Waco','TX',31.55,-97.15],['Temple','TX',31.10,-97.34],['Hamilton','TX',31.70,-98.12],['Dublin','TX',32.09,-98.34],['Stephenville','TX',32.22,-98.20],['Eastland','TX',32.40,-98.82],['Cisco','TX',32.39,-98.98],['Brownwood','TX',31.71,-98.99],['San Angelo','TX',31.46,-100.44],['Corpus Christi','TX',27.80,-97.40],['George West','TX',28.33,-98.12],['Pleasanton','TX',28.97,-98.48],['Pasadena','TX',29.69,-95.21],['Channelview','TX',29.78,-95.11],['Lampasas','TX',31.06,-98.18],['Goldthwaite','TX',31.45,-98.57],['Colorado City','TX',32.39,-100.86],['Stanton','TX',32.13,-101.79],['Lubbock','TX',33.58,-101.86],['Amarillo','TX',35.22,-101.83],['Dalhart','TX',36.06,-102.52],['Clayton','NM',36.45,-103.18],['Raton','NM',36.90,-104.44],['Trinidad','CO',37.17,-104.50],['Walsenburg','CO',37.62,-104.78],['Pueblo','CO',38.25,-104.61],['Childress','TX',34.43,-100.20],['Wichita Falls','TX',33.91,-98.49],['Fort Worth','TX',32.75,-97.33],['Dallas','TX',32.78,-96.80],['Lamesa','TX',32.74,-101.95],['Post','TX',33.19,-101.38],['Snyder','TX',32.72,-100.92],['Llano','TX',30.75,-98.68],['Brady','TX',31.13,-99.33],['Fredericksburg','TX',30.27,-98.87],['Victoria','TX',28.80,-97.00],['Beeville','TX',28.40,-97.75],['Rankin','TX',31.22,-101.94],['Big Lake','TX',31.19,-101.46],['Pecos','TX',31.42,-103.49],['Monahans','TX',31.59,-102.89]
   ]
 };
